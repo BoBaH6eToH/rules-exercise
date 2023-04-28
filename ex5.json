@@ -1,0 +1,24 @@
+{
+	"entryPointRuleChainNames": [
+        "INPUT-TRAFFIC-CHAIN"
+    ],
+	"__type": "ag::core::rule_engine::OrLogicalExpConfig",
+	"name": "INPUT-TRAFFIC",
+	"expressions": [
+		{
+			"__type": "ag::rule_engine::StringExpConfig",
+			"name": "SOCIAL-NETWORK-TRAFFIC",
+			"values": [
+				{
+					"__type": "ag::rule_engine::StringListOperand",
+					"values": [
+						"Media",
+						"SocialNetwork"
+					]
+				}
+			],
+			"operation": "NOT_EQUALS",
+			"property": "connection.dpi.ndpi.category"
+		}	
+	]
+}

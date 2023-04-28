@@ -1,0 +1,15 @@
+{
+	"__type": "ag::core::rule_engine::TcpPortExpConfig",
+	"name": "TCP-DST-PORT-80-443",
+	"operation": "EQUALS",
+	"property": "connection.tcp.dstPort",
+	"values": [
+		{
+			"__type": "ag::core::rule_engine::TcpPortListOperand",
+			"ports": [
+				"443",
+				"80"
+			]
+		}
+	]
+}

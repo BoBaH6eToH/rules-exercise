@@ -1,0 +1,35 @@
+{
+	"entryPointRuleChainNames": [
+        "INPUT-TRAFFIC-CHAIN"
+    ],
+	"__type": "ag::core::rule_engine::OrLogicalExpConfig",
+	"name": "INPUT-TRAFFIC",
+	"expressions": [
+		{
+			"__type": "ag::rule_engine::UserSessionStateExpConfig",
+			"name": "USER-SESSION-ACTIVE",
+			"property": "connection.userSession.state",
+			"values": [
+				{
+					"__type": "ag::rule_engine::UserSessionStateOperand",
+					"state": "ACTIVE"
+				}
+			],
+			"operation": "EQUALS"
+		},
+		{
+			"__type": "ag::core::rule_engine::StringExpConfig",
+			"operation": "IN",
+			"name": "WHITELIST-HTTP-DOMAINS",
+			"property": "connection.domain",
+			"values": [
+				{
+					"__type": "ag::core::rule_engine::StringListOperand",
+					"values": [
+						"login.com"
+					]
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,71 @@
+{
+	"entryPointRuleChainNames": [
+        "INPUT-TRAFFIC-CHAIN"
+    ],
+	"__type": "ag::core::rule_engine::OrLogicalExpConfig",
+	"name": "INPUT-TRAFFIC",
+	"expressions": [
+		{
+			"__type": "ag::core::rule_engine::AndLogicalExpConfig",
+			"name": "MAC-IP-RULE",
+			"expressions": [
+				{
+					"__type": "ag::rule_engine::MacAddressExpConfig",
+					"name": "BYPASSED-DEVICES",
+					"values": [
+						{
+							"__type": "ag::rule_engine::MacAddressListOperand",
+							"addresses": [
+								"11:22:33:44:55:66"
+							]
+						}
+					],
+					"operation": "EQUALS",
+					"property": "connection.ethernet.srcAddress"
+				},
+				{
+					"__type": "ag::rule_engine::Ipv4AddressExpConfig",
+					"name": "WHITELISTED-DESTINATION-IPS",
+					"values": [
+						{
+							"__type": "ag::rule_engine::Ipv4AddressListOperand",
+							"addresses": [
+								"93.184.216.34"
+							]
+						}
+					],
+					"operation": "EQUALS",
+					"property": "connection.ip.dstAddress"
+				}
+			]	
+		},
+		{
+			"__type": "ag::rule_engine::MacAddressExpConfig",
+			"name": "BYPASSED-DEVICES-2",
+			"values": [
+				{
+					"__type": "ag::rule_engine::MacAddressListOperand",
+					"addresses": [
+						"AA:BB:CC:DD:EE:FF"
+					]
+				}
+			],
+			"operation": "EQUALS",
+			"property": "connection.ethernet.srcAddress"
+		},
+		{
+			"__type": "ag::rule_engine::Ipv4AddressExpConfig",
+			"name": "WHITELISTED-DESTINATION-IPS-2",
+			"values": [
+				{
+					"__type": "ag::rule_engine::Ipv4AddressListOperand",
+					"addresses": [
+						"192.168.1.3"
+					]
+				}
+			],
+			"operation": "EQUALS",
+			"property": "connection.ip.dstAddress"
+		}
+	]
+}

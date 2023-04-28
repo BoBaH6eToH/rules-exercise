@@ -1,0 +1,15 @@
+{
+	"__type": "ag::rule_engine::ConnectionTypeExpConfig",
+	"name": "TCP-PROTOCOL",
+	"operation": "EQUALS",
+	"property": "connection.type",
+	"values": [
+		{
+			"__type": "ag::rule_engine::ConnectionTypeListOperand",
+			"connectionTypes": [
+				"TCP4",
+				"TCP6"
+			]
+		}
+	]
+}

@@ -1,0 +1,40 @@
+{
+	"entryPointRuleChainNames": [
+        "INPUT-TRAFFIC-CHAIN"
+    ],
+	"__type": "ag::core::rule_engine::OrLogicalExpConfig",
+	"name": "INPUT-TRAFFIC",
+	"expressions": [
+		{
+			"__type": "ag::core::rule_engine::StringExpConfig",
+			"operation": "IN",
+			"name": "WHITELIST-HTTPS-DOMAINS-1",
+			"property": "connection.domain",
+			"values": [
+				{
+					"__type": "ag::core::rule_engine::StringListOperand",
+					"values": [
+						"google.com",
+						"Facecbook.com",
+						"Apple.com"						
+					]
+				}
+			]
+		},
+		{
+			"__type": "ag::core::rule_engine::Ipv4AddressExpConfig",
+			"operation": "EQUALS",
+			"property": "connection.ip.dstAddress",
+			"values": [
+				{
+					"__type": "ag::core::rule_engine::Ipv4AddressListOperand",
+					"addresses": [
+						"178.236.7.18",
+						"172.65.64.50",
+						"17.86.254.172"
+					]
+				}
+			]
+		}
+	]
+}

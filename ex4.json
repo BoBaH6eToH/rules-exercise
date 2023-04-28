@@ -1,0 +1,91 @@
+{
+	"ruleManager": {
+		"name": "DSCP-RULE-CHAIN",
+		"rules": [
+			{
+				"expression": "EMAIL-TRAFFIC",
+				"name": "EMAIL-TRAFFIC",
+				"actions": {
+					"trueActions": [
+						{
+							"type": "ALLOW"
+						},
+						{
+							"type": "DSCP",
+							"params": {
+								"__type": "ag::rule_engine::RuleDscpActionParams",
+								"dscp": 1
+							}
+						}
+					]
+				}
+			},
+			{
+				"expression": "MESSENGER-TRAFFIC",
+				"name": "MESSENGER-TRAFFIC",
+				"actions": {
+					"trueActions": [
+						{
+							"type": "ALLOW"
+						},
+						{
+							"type": "DSCP",
+							"params": {
+								"__type": "ag::rule_engine::RuleDscpActionParams",
+								"dscp": 2
+							}
+						}
+					]
+				}
+			},
+			{
+				"expression": "SOCIAL-NETWORK-TRAFFIC",
+				"name": "SOCIAL-NETWORK-TRAFFIC",
+				"actions": {
+					"trueActions": [
+						{
+							"type": "ALLOW"
+						},
+						{
+							"type": "DSCP",
+							"params": {
+								"__type": "ag::rule_engine::RuleDscpActionParams",
+								"dscp": 1
+							}
+						}
+					]
+				}
+			},
+			{
+				"expression": "STREAMING-MEDIA-TRAFFIC",
+				"name": "STREAMING-MEDIA-TRAFFIC",
+				"actions": {
+					"trueActions": [
+						{
+							"type": "ALLOW"
+						},
+						{
+							"type": "DSCP",
+							"params": {
+								"__type": "ag::rule_engine::RuleDscpActionParams",
+								"dscp": 1
+							}
+						}
+					],
+					"falseActions": [
+						{
+							"type": "ALLOW"
+						},
+						{
+							"type": "DSCP",
+							"params": {
+								"__type": "ag::rule_engine::RuleDscpActionParams",
+								"dscp": 1
+							}
+						}
+					]
+				}
+			}
+		]
+	}
+}
